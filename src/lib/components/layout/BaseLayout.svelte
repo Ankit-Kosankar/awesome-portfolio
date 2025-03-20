@@ -100,7 +100,10 @@
       grid-area: sidebar;
       overflow-y: auto;
       transition: all 0.3s ease;
-      width: 250px;
+      /* width: 250px; */
+      width: 70%;
+      background-color: aquamarine;
+      height: 7%;
     }
     
     .main-content {
@@ -128,9 +131,11 @@
         position: fixed;
         left: 0;
         top: 0;
-        height: 100vh;
+        /* height: 100vh; */
         z-index: 20;
         transform: translateX(0);
+        width: 19%;
+        height: 7%;
         /* box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2); */
       }
       
