@@ -1,7 +1,9 @@
 <script>
     import { Sidebar, SidebarGroup, SidebarItem, SidebarWrapper, SidebarDropdownItem, SidebarDropdownWrapper } from 'flowbite-svelte';
     import { ChartPieSolid, GridSolid, CartSolid, MailBoxSolid, UserSolid, ArrowRightToBracketOutline, EditOutline } from 'flowbite-svelte-icons';
-
+    import { BrainSolid } from 'flowbite-svelte-icons'; 
+    import { EditSolid } from 'flowbite-svelte-icons';
+    import { CodeBranchSolid } from 'flowbite-svelte-icons';
     // Add this script to help debug the issue
     if (typeof window !== 'undefined') {
       const updateModeIndicator = () => {
@@ -85,58 +87,25 @@
   <Sidebar class="responsive-sidebar">
     <SidebarWrapper>
       <SidebarGroup>
-        <SidebarItem>
+        <SidebarItem class="sidebar-item">
           <svelte:fragment slot="icon">
-            <ChartPieSolid class="sidebar-icon" />
+            <BrainSolid class="sidebar-icon" />
           </svelte:fragment>
-          <span class="sidebar-label">Dashboard</span>
+          <span class="sidebar-label">AI Framework Developer</span>
         </SidebarItem>
         
-        <SidebarItem>
+        <SidebarItem class="sidebar-item">
           <svelte:fragment slot="icon">
-            <CartSolid class="sidebar-icon" />
+            <EditSolid class="sidebar-icon" />
           </svelte:fragment>
-          <span class="sidebar-label">E-commerce</span>
-          <svg class="dropdown-arrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-          </svg>
+          <span class="sidebar-label">Content Writing</span>
         </SidebarItem>
         
-        <SidebarItem>
+        <SidebarItem class="sidebar-item">
           <svelte:fragment slot="icon">
-            <GridSolid class="sidebar-icon" />
+            <CodeBranchSolid class="sidebar-icon" />
           </svelte:fragment>
-          <span class="sidebar-label">Kanban</span>
-          <span class="sidebar-badge" style="background-color: #e5e7eb; color: #1f2937; padding: 2px 8px; border-radius: 9999px;">Pro</span>
-        </SidebarItem>
-        
-        <SidebarItem>
-          <svelte:fragment slot="icon">
-            <MailBoxSolid class="sidebar-icon" />
-          </svelte:fragment>
-          <span class="sidebar-label">Inbox</span>
-          <span class="sidebar-badge" style="background-color: #dbeafe; color: #2563eb; width: 12px; height: 12px; display: flex; align-items: center; justify-content: center; border-radius: 9999px;">3</span>
-        </SidebarItem>
-        
-        <SidebarItem>
-          <svelte:fragment slot="icon">
-            <UserSolid class="sidebar-icon" />
-          </svelte:fragment>
-          <span class="sidebar-label">Users</span>
-        </SidebarItem>
-        
-        <SidebarItem>
-          <svelte:fragment slot="icon">
-            <ArrowRightToBracketOutline class="sidebar-icon" />
-          </svelte:fragment>
-          <span class="sidebar-label">Sign In</span>
-        </SidebarItem>
-        
-        <SidebarItem>
-          <svelte:fragment slot="icon">
-            <EditOutline class="sidebar-icon" />
-          </svelte:fragment>
-          <span class="sidebar-label">Sign Up</span>
+          <span class="sidebar-label">Full Stack Developer</span>
         </SidebarItem>
       </SidebarGroup>
     </SidebarWrapper>

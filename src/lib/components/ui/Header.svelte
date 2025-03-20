@@ -13,8 +13,8 @@
   <div class="container mx-auto flex flex-wrap justify-between items-center">
     <!-- Logo/Brand -->
     <a href="/" class="flex items-center">
-      <img src="/images/flowbite-svelte-icon-logo.svg" class="mr-3 h-8" alt="Logo" />
-      <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+      <img src="/images/brandlogo3.png" class="mr-3 h-8" alt="Logo" />
+      <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"></span>
     </a>
     
     <!-- Hamburger button -->
