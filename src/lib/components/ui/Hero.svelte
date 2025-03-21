@@ -207,14 +207,14 @@
     <div class="hero-content">
       <h1 class="hero-heading">Hi, I'm Ankit Kosankar</h1>
       <p class="hero-text">
-        A Software Engineer and AI/ML Enthusiast with a strong background in software development 
+        A Software Engineer and AI/ML Enthusiast with a strong background in full stack software development 
         and keen interest in artificial intelligence and machine learning. I thrive on solving 
         complex problems and creating innovative solutions. My experience includes working with 
         various programming languages and AI frameworks.
       </p>
       <div class="button-container">
-        <a href="/contact" class="btn primary-btn">Talk to Me</a>
-        <a href="/projects" class="btn secondary-btn">See My Work</a>
+        <a href="/contact" class="btn primary-btn">Download Resume</a>
+        <a href="/projects" class="btn secondary-btn">Talk To Me</a>
       </div>
     </div>
     

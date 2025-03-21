@@ -12,6 +12,9 @@
     import Projects from '../ui/Projects.svelte';
     import Hero from '../ui/Hero.svelte';
     import Blog from '../ui/Blog.svelte';
+	import Sidebar2 from '../ui/Sidebar2.svelte';
+	import About from '../ui/About.svelte';
+  import ContactMe from '../ui/ContactMe.svelte';
     
 
     // State for controlling sidebar visibility
@@ -60,26 +63,34 @@
 
     <div class="sidebar" class:expanded={sidebarExpanded}>
       <!-- Your existing sidebar component goes here -->
-      <Sidebar />
+      <Sidebar2 />
       <!-- <slot name="sidebar"></slot> -->
     </div>
     
     <div class="main-content">
         <div>
-        <Hero></Hero>
-            </div>
+          <Hero></Hero>
+        </div>
             
-            <div>
-                <Blog></Blog>
-            </div>
-            
-            <div>
-                <Projects></Projects>
-            </div>
-            
-            <div>
-                <Skills></Skills>
-            </div>
+        <div>
+          <Skills></Skills>
+        </div>
+
+        <div>
+          <About></About>
+        </div>
+                
+        <div>
+            <Projects></Projects>
+        </div>
+
+        <div>
+          <Blog></Blog>
+        </div>
+
+        <div>
+          <ContactMe></ContactMe>
+        </div>
             
         <!-- Page content from routes -->
       <!-- <slot></slot> -->

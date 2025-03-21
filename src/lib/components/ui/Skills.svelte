@@ -27,19 +27,19 @@
           { name: "Server-Side Programming", icon: "fas fa-server" }
         ]
       },
+      // {
+      //   name: "AI & ML Technologies",
+      //   skills: [
+      //     { name: "Python", icon: "fab fa-python" },
+      //     { name: "TensorFlow", icon: "fas fa-brain" },
+      //     { name: "PyTorch", icon: "fas fa-fire" },
+      //     { name: "LangChain", icon: "fas fa-link" },
+      //     { name: "Agent Development", icon: "fas fa-robot" },
+      //     { name: "ML APIs", icon: "fas fa-plug" }
+      //   ]
+      // },
       {
-        name: "AI & ML Technologies",
-        skills: [
-          { name: "Python", icon: "fab fa-python" },
-          { name: "TensorFlow", icon: "fas fa-brain" },
-          { name: "PyTorch", icon: "fas fa-fire" },
-          { name: "LangChain", icon: "fas fa-link" },
-          { name: "Agent Development", icon: "fas fa-robot" },
-          { name: "ML APIs", icon: "fas fa-plug" }
-        ]
-      },
-      {
-        name: "Tools & Others",
+        name: "DevOps Tools & Others",
         skills: [
           { name: "Git", icon: "fab fa-git-alt" },
           { name: "Docker", icon: "fab fa-docker" },
@@ -252,6 +252,7 @@
         flex: 1 1 calc(50% - 8px);
         padding: 6px 10px;
         font-size: 0.85rem;
+        border: 0.5px solid rgba(0, 0, 0, 0.5)
       }
       
       li i {

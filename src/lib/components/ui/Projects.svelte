@@ -4,15 +4,15 @@
     // Sample project data - replace with your actual projects
     let projects = [
       {
-        title: "AI Image Generator",
-        description: "A deep learning model that generates realistic images from text descriptions using stable diffusion.",
-        tags: ["Python", "PyTorch", "React"],
+        title: "AI Chat Application",
+        description: "An Integration of Chat GPT and it uses OpenAI's API to provide natural language processing and chatbot capabilitiesconsole.",
+        tags: ["Python", "AI", "Prompting" , "React"],
         image: "/images/project1.jpg", // Replace with your image paths
         github: "https://github.com/yourusername/ai-image-gen",
         demo: "https://demo-url.com/ai-gen"
       },
       {
-        title: "Personal Finance Dashboard",
+        title: "Spring Boot Microservices",
         description: "An interactive dashboard for tracking expenses, investments, and financial goals with data visualization.",
         tags: ["JavaScript", "D3.js", "Firebase"],
         image: "/images/project2.jpg",
