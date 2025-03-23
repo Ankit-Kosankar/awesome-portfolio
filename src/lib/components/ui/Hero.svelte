@@ -45,13 +45,13 @@
     .button-container {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      /* justify-content: center; */
       gap: 1rem;
       margin-top: 1.5rem;
     }
   
     .btn {
-      padding: 0.75rem 1.5rem;
+      padding: 1rem 3rem;
       border-radius: 0.375rem;
       font-weight: 600;
       font-size: 1rem;
@@ -160,6 +160,11 @@
       }
     }
   
+    @media (min-width: 768px) {
+      .small-fonts-size {
+        font-size: small;
+      }
+    }
     /* Responsive styles */
     @media (min-width: 768px) {
       .hero-section {
@@ -190,10 +195,12 @@
     @media (min-width: 1024px) {
       .hero-heading {
         font-size: 3rem;
+        text-align: left;
       }
   
       .hero-text {
-        font-size: 1.25rem;
+        /* font-size: 1.25rem; */
+        text-align: left;
       }
   
       .hero-image {
@@ -201,11 +208,36 @@
         height: 400px;
       }
     }
+
+    /* mOBILE SCREEN */
+    @media (max-width: 480px) {
+      .hero-heading {
+        font-size: medium;
+        text-align: left;
+      }
+  
+      .hero-text {
+        font-size: small;
+        text-align: left;
+        font-weight: 550;
+      }
+  
+      .hero-image {
+        width: 1rem;
+        height: 1rem;
+      }
+
+      .small-fonts-size {
+        font-size: small;
+        padding: 0.67rem 1.25rem;
+      }
+    }
+
   </style>
   
   <section class="hero-section">
     <div class="hero-content">
-      <h1 class="hero-heading">Hi, I'm Ankit Kosankar</h1>
+      <h1 class="hero-heading ">Hi, I'm Ankit Kosankar</h1>
       <p class="hero-text">
         A Software Engineer and AI/ML Enthusiast with a strong background in full stack software development 
         and keen interest in artificial intelligence and machine learning. I thrive on solving 
@@ -213,8 +245,8 @@
         various programming languages and AI frameworks.
       </p>
       <div class="button-container">
-        <a href="/contact" class="btn primary-btn">Download Resume</a>
-        <a href="/projects" class="btn secondary-btn">Talk To Me</a>
+        <a href="/contact" class="btn primary-btn small-fonts-size">Download Resume</a>
+        <a href="/projects" class="btn secondary-btn small-fonts-size">Talk To Me</a>
       </div>
     </div>
     

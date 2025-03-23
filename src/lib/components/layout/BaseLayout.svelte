@@ -57,8 +57,8 @@
   
 <div class="main-content">
   <div><Hero></Hero></div>
-  <div><Skills></Skills></div>
   <div><About></About></div>
+  <div><Skills></Skills></div>
   <div><Projects></Projects></div>
   <div><Blog></Blog></div>
   <div><ContactMe></ContactMe></div>
