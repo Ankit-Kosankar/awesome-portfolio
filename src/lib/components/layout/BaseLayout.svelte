@@ -10,6 +10,7 @@
   import Sidebar2 from '../ui/Sidebar2.svelte';
   import About from '../ui/About.svelte';
   import ContactMe from '../ui/ContactMe.svelte';
+	import Sidebar3 from '../ui/Sidebar3.svelte';
   
   // State for controlling sidebar visibility
   let sidebarVisible = true;
@@ -157,7 +158,7 @@
   .sidebar-toggle-btn {
     display: flex;
     position: fixed;
-    left: 4.5%;
+    left: 6.5%;
     transform: translateX(-50%);
     top: 10%;
     z-index: 30;
