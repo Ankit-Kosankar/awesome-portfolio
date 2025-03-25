@@ -4,7 +4,7 @@
   
   <Footer footerType="logo">
     <div class="sm:flex sm:items-center sm:justify-between">
-      <FooterBrand href="https://flowbite.com" src="/images/flowbite-svelte-icon-logo.svg" alt="Flowbite Logo" name="Flowbite" />
+      <FooterBrand href="https://flowbite.com" src="/images/brandlogo3.png" alt="Flowbite Logo" name="" />
       <FooterLinkGroup ulClass="flex flex-wrap items-center mb-6 text-sm text-gray-500 sm:mb-0 dark:text-gray-400">
         <FooterLink href="/">About</FooterLink>
         <FooterLink href="/">Privacy Policy</FooterLink>
@@ -13,5 +13,6 @@
       </FooterLinkGroup>
     </div>
     <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-    <FooterCopyright href="/" by="Flowbite™" />
+    <!-- <FooterCopyright href="/" by="Flowbite™" /> -->
+    <FooterCopyright href="/" by="Ankit Kosankar™" />
   </Footer>

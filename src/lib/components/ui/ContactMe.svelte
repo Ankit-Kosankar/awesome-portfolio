@@ -120,7 +120,7 @@
             </svg>
           </div>
           <h3>Email</h3>
-          <p>hello@example.com</p>
+          <p>ankitkosankarfreelance@gmail.com</p>
         </div>
         
         <div class="info-card">
@@ -131,7 +131,7 @@
             </svg>
           </div>
           <h3>Location</h3>
-          <p>San Francisco, CA</p>
+          <p>India, Mumbai</p>
         </div>
         
         <div class="info-card">
