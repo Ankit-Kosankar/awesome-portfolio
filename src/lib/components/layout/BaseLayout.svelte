@@ -53,6 +53,9 @@
 </button>
 
 <div class="sidebar" class:expanded={sidebarExpanded}>
+  <div class="simple-border">
+    <span>Services</span>
+  </div>
   <Sidebar2 />
 </div>
   
@@ -71,6 +74,9 @@
 </div>
 
 <style>
+  .simple-border {
+  border: 2px solid black;
+}
 /* Main layout container */
 .app-container {
   display: grid;

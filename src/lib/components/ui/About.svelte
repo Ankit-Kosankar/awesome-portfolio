@@ -16,7 +16,7 @@
     </div>
     
     <!-- About section with subtle card effect -->
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 mb-10 transform transition-all duration-300 hover:scale-[1.01] hover:shadow-xl">
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 mb-10 transform transition-all duration-300 hover:scale-[1.01] hover:shadow-xl border-l-4 border-indigo-500 dark:border-indigo-400">
       <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center small-font-size">
         <span class="mr-3 text-indigo-600 dark:text-indigo-400">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
