@@ -112,7 +112,7 @@
   overflow-y: auto;
   transition: all 0.3s ease;
   width: auto; /* Changed from 70% to auto to adapt to content */
-  background-color: aquamarine;
+  /* background-color: aquamarine; */
 }
   
 .main-content {
