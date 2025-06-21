@@ -1,13 +1,22 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import { blogConfig } from '$lib/config/blog';
     
     // Animation variables
     let isVisible = false;
-    let cards = [
-      { title: "AI Advancements", description: "Exploring the latest breakthroughs in artificial intelligence and their implications.", date: "Coming Soon" },
-      { title: "Web Development Trends", description: "A deep dive into modern web development practices and technologies.", date: "Coming Soon" },
-      { title: "Machine Learning Projects", description: "Showcasing innovative ML projects and their real-world applications.", date: "Coming Soon" }
-    ];
+    let loading = true;
+    let error = false;
+    
+    // Blog posts from Medium RSS feed
+    let blogPosts: Array<{
+      title: string;
+      description: string;
+      date: string;
+      url: string;
+      image: string;
+      author: string;
+      readTime?: string;
+    }> = [];
     
     // Blueprint lines animation
     let blueprintLines = Array(20).fill(null).map(() => ({
@@ -17,12 +26,103 @@
     }));
     
     // Text animation
-    let titleText = "Blog Coming Soon";
+    let titleText = "My Blog";
     let displayedTitle = "";
     let titleIndex = 0;
-    let subtitleText = "Building something amazing for you";
+    let subtitleText = "Thoughts on technology, development, and innovation";
     let displayedSubtitle = "";
     let subtitleIndex = 0;
+    
+    // Function to parse RSS feed and extract blog posts
+    async function fetchMediumPosts() {
+      try {
+        // Use RSS feed URL from config
+        const rssUrl = blogConfig.rssUrl;
+        
+        // Use CORS proxy from config
+        const response = await fetch(blogConfig.corsProxy + encodeURIComponent(rssUrl));
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch blog posts');
+        }
+        
+        const xmlText = await response.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+        
+        const items = xmlDoc.querySelectorAll('item');
+        const posts: Array<{
+          title: string;
+          description: string;
+          date: string;
+          url: string;
+          image: string;
+          author: string;
+          readTime?: string;
+        }> = [];
+        
+        items.forEach((item, index) => {
+          if (index < blogConfig.maxPosts) { // Use max posts from config
+            const title = item.querySelector('title')?.textContent || '';
+            const description = item.querySelector('description')?.textContent || '';
+            const pubDate = item.querySelector('pubDate')?.textContent || '';
+            const link = item.querySelector('link')?.textContent || '';
+            const author = item.querySelector('dc\\:creator')?.textContent || 
+                          item.querySelector('author')?.textContent || 'Unknown';
+            
+            // Extract image from content or use default
+            let image = '';
+            const content = item.querySelector('content\\:encoded')?.textContent || '';
+            const imgMatch = content.match(/<img[^>]+src="([^"]+)"/);
+            if (imgMatch) {
+              image = imgMatch[1];
+            } else {
+              // Use technology-themed Unsplash images as fallback
+              const techImages = [
+                'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=200&fit=crop&crop=center', // Code
+                'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=200&fit=crop&crop=center', // AI/ML
+                'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=200&fit=crop&crop=center', // Development
+                'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=200&fit=crop&crop=center', // Technology
+                'https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=400&h=200&fit=crop&crop=center', // Data Science
+                'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=200&fit=crop&crop=center'  // Web Development
+              ];
+              image = techImages[index % techImages.length];
+            }
+            
+            // Format date
+            const date = new Date(pubDate).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric'
+            });
+            
+            // Extract read time from description or estimate
+            const readTimeMatch = description.match(/(\d+)\s*min\s*read/i);
+            const readTime = readTimeMatch ? `${readTimeMatch[1]} min read` : '5 min read';
+            
+            posts.push({
+              title,
+              description: description.replace(/<[^>]*>/g, '').substring(0, 120) + '...',
+              date,
+              url: link,
+              image,
+              author,
+              readTime
+            });
+          }
+        });
+        
+        blogPosts = posts;
+        loading = false;
+      } catch (err) {
+        console.error('Error fetching blog posts:', err);
+        error = true;
+        loading = false;
+        
+        // Use fallback posts from config
+        blogPosts = blogConfig.fallbackPosts;
+      }
+    }
     
     function animateTitle() {
       if (titleIndex < titleText.length) {
@@ -50,6 +150,9 @@
       setTimeout(() => {
         animateTitle();
       }, 800);
+      
+      // Fetch blog posts
+      fetchMediumPosts();
     });
   </script>
   
@@ -158,12 +261,47 @@
       font-weight: 500;
     }
     
+    /* Loading and error states */
+    .loading-container, .error-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 3rem 0;
+      text-align: center;
+    }
+    
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #e5e7eb;
+      border-top: 4px solid #3b82f6;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 1rem;
+    }
+    
+    .loading-text, .error-text {
+      font-size: 1rem;
+      color: #6b7280;
+    }
+    
+    .error-text {
+      color: #ef4444;
+    }
+    
     /* Card container */
     .card-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 2rem;
       width: 100%;
+    }
+    
+    .blog-card-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
     }
     
     .blog-card {
@@ -174,6 +312,9 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       opacity: 0;
       transform: translateY(20px);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
     
     .blog-card.visible {
@@ -188,29 +329,41 @@
     
     .card-image {
       height: 160px;
-      background: linear-gradient(135deg, #a5b4fc, #3b82f6);
       position: relative;
       overflow: hidden;
     }
     
-    .card-image::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
+    .card-image-img {
       width: 100%;
       height: 100%;
-      background-image: repeating-linear-gradient(
-        0deg,
-        rgba(255, 255, 255, 0.1),
-        rgba(255, 255, 255, 0.1) 2px,
-        transparent 2px,
-        transparent 4px
-      );
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .blog-card:hover .card-image-img {
+      transform: scale(1.05);
+    }
+    
+    .card-overlay {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 0.5rem 0.75rem;
+      border-bottom-left-radius: 0.5rem;
+    }
+    
+    .read-time {
+      font-size: 0.75rem;
+      font-weight: 500;
     }
     
     .card-content {
       padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
     }
     
     .card-title {
@@ -218,12 +371,22 @@
       font-weight: 600;
       color: #1f2937;
       margin-bottom: 0.5rem;
+      line-height: 1.3;
     }
     
     .card-description {
       font-size: 1rem;
       color: #4b5563;
       margin-bottom: 1rem;
+      flex-grow: 1;
+      line-height: 1.5;
+    }
+    
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
     }
     
     .card-date {
@@ -232,16 +395,10 @@
       font-style: italic;
     }
     
-    .card-badge {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background-color: rgba(59, 130, 246, 0.9);
-      color: white;
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.25rem 0.75rem;
-      border-radius: 9999px;
+    .card-author {
+      font-size: 0.875rem;
+      color: #3b82f6;
+      font-weight: 500;
     }
     
     /* Animations */
@@ -251,6 +408,15 @@
       }
       50% {
         opacity: 0.6;
+      }
+    }
+    
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
       }
     }
     
@@ -331,28 +497,39 @@
         </p>
       </div>
       
-      <!-- Construction indicator -->
-      <div class="construction-indicator">
-        <span class="progress-text">65% Complete</span>
-        <div class="progress-bar">
-          <div class="progress-fill"></div>
+      <!-- Loading state -->
+      {#if loading}
+        <div class="loading-container">
+          <div class="loading-spinner"></div>
+          <p class="loading-text">Loading blog posts...</p>
         </div>
-        <span class="progress-text">Coming Soon</span>
-      </div>
+      {:else if error}
+        <div class="error-container">
+          <p class="error-text">Unable to load blog posts. Showing sample content.</p>
+        </div>
+      {/if}
       
       <!-- Blog cards -->
       <div class="card-container">
-        {#each cards as card, i}
-          <div class="blog-card" class:visible={isVisible} style="transition-delay: {i * 0.2}s">
-            <div class="card-image">
-              <span class="card-badge">Coming Soon</span>
+        {#each blogPosts as post, i}
+          <a href={post.url} target="_blank" rel="noopener noreferrer" class="blog-card-link">
+            <div class="blog-card" class:visible={isVisible} style="transition-delay: {i * 0.2}s">
+              <div class="card-image">
+                <img src={post.image} alt={post.title} class="card-image-img" />
+                <div class="card-overlay">
+                  <span class="read-time">{post.readTime}</span>
+                </div>
+              </div>
+              <div class="card-content">
+                <h3 class="card-title">{post.title}</h3>
+                <p class="card-description">{post.description}</p>
+                <div class="card-meta">
+                  <p class="card-date">{post.date}</p>
+                  <p class="card-author">by {post.author}</p>
+                </div>
+              </div>
             </div>
-            <div class="card-content">
-              <h3 class="card-title">{card.title}</h3>
-              <p class="card-description">{card.description}</p>
-              <p class="card-date">{card.date}</p>
-            </div>
-          </div>
+          </a>
         {/each}
       </div>
     </div>

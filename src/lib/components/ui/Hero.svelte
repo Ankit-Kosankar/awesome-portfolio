@@ -7,14 +7,16 @@
     /* Main container styling */
     .hero-section {
       display: flex;
-      flex-direction: column-reverse;
-      align-items: center;
+      /* flex-direction: column-reverse; */
+      /* align-items: center; */
       justify-content: space-between;
       padding: 2rem 1.5rem;
-      min-height: 100vh;
+      /* min-height: 100vh; */
       max-width: 1200px;
       margin: 0 auto;
       gap: 2rem;
+      padding-top: 0px;
+      border : 1px solid
     }
   
     /* Content text styling */

@@ -7,34 +7,34 @@
       title: "AI Chat Application",
       description: "An Integration of Chat GPT and it uses OpenAI's API to provide natural language processing and chatbot capabilitiesconsole.",
       tags: ["Python", "AI", "Prompting" , "React"],
-      image: "/images/project1.jpg", // Replace with your image paths
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=200&fit=crop&crop=center",
       github: "https://github.com/yourusername/ai-image-gen",
       demo: "https://demo-url.com/ai-gen"
     },
     {
       title: "Spring Boot Microservices",
-      description: "An interactive dashboard for tracking expenses, investments, and financial goals with data visualization.",
-      tags: ["JavaScript", "D3.js", "Firebase"],
-      image: "/images/project2.jpg",
-      github: "https://github.com/yourusername/finance-dashboard",
-      demo: "https://demo-url.com/finance"
+      description: "A simple Web Services Chat application with group chats and chat rooms.",
+      tags: ["Java", "Spring Boot","Spring Data JPA"],
+      image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=400&h=200&fit=crop&crop=center",
+      github: "https://github.com/Ankit-Kosankar/chat-app",
+      demo: "N.A"
     },
-    {
-      title: "Machine Learning API",
-      description: "RESTful API that provides sentiment analysis and text classification for customer feedback.",
-      tags: ["Python", "Flask", "scikit-learn"],
-      image: "/images/project3.jpg",
-      github: "https://github.com/yourusername/ml-api",
-      demo: null
-    },
-    {
-      title: "E-commerce Platform",
-      description: "Full-stack e-commerce solution with product management, cart functionality, and payment integration.",
-      tags: ["React", "Node.js", "MongoDB"],
-      image: "/images/project4.jpg",
-      github: "https://github.com/yourusername/ecommerce",
-      demo: "https://demo-url.com/shop"
-    }
+    // {
+    //   title: "Machine Learning API",
+    //   description: "RESTful API that provides sentiment analysis and text classification for customer feedback.",
+    //   tags: ["Python", "Flask", "scikit-learn"],
+    //   image: "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=400&h=200&fit=crop&crop=center",
+    //   github: "https://github.com/yourusername/ml-api",
+    //   demo: null
+    // },
+    // {
+    //   title: "E-commerce Platform",
+    //   description: "Full-stack e-commerce solution with product management, cart functionality, and payment integration.",
+    //   tags: ["React", "Node.js", "MongoDB"],
+    //   image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=200&fit=crop&crop=center",
+    //   github: "https://github.com/yourusername/ecommerce",
+    //   demo: "https://demo-url.com/shop"
+    // }
   ];
   
   // Animation control

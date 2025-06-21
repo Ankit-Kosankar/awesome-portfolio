@@ -52,6 +52,7 @@
     flex-direction: column;
     align-items: center;
     transition: all 0.3s ease;
+    padding-top: 1.2rem;
   }
   
   /* Icon container styles */
